@@ -1,0 +1,15 @@
+D:\Yan\Estudos\Projeto_Prefeitura\bin\Debug\net6.0\Projeto_Prefeitura.exe
+D:\Yan\Estudos\Projeto_Prefeitura\bin\Debug\net6.0\Projeto_Prefeitura.deps.json
+D:\Yan\Estudos\Projeto_Prefeitura\bin\Debug\net6.0\Projeto_Prefeitura.runtimeconfig.json
+D:\Yan\Estudos\Projeto_Prefeitura\bin\Debug\net6.0\Projeto_Prefeitura.dll
+D:\Yan\Estudos\Projeto_Prefeitura\bin\Debug\net6.0\Projeto_Prefeitura.pdb
+D:\Yan\Estudos\Projeto_Prefeitura\obj\Debug\net6.0\Projeto_Prefeitura.csproj.AssemblyReference.cache
+D:\Yan\Estudos\Projeto_Prefeitura\obj\Debug\net6.0\Projeto_Prefeitura.GeneratedMSBuildEditorConfig.editorconfig
+D:\Yan\Estudos\Projeto_Prefeitura\obj\Debug\net6.0\Projeto_Prefeitura.AssemblyInfoInputs.cache
+D:\Yan\Estudos\Projeto_Prefeitura\obj\Debug\net6.0\Projeto_Prefeitura.AssemblyInfo.cs
+D:\Yan\Estudos\Projeto_Prefeitura\obj\Debug\net6.0\Projeto_Prefeitura.csproj.CoreCompileInputs.cache
+D:\Yan\Estudos\Projeto_Prefeitura\obj\Debug\net6.0\Projeto_Prefeitura.dll
+D:\Yan\Estudos\Projeto_Prefeitura\obj\Debug\net6.0\refint\Projeto_Prefeitura.dll
+D:\Yan\Estudos\Projeto_Prefeitura\obj\Debug\net6.0\Projeto_Prefeitura.pdb
+D:\Yan\Estudos\Projeto_Prefeitura\obj\Debug\net6.0\Projeto_Prefeitura.genruntimeconfig.cache
+D:\Yan\Estudos\Projeto_Prefeitura\obj\Debug\net6.0\ref\Projeto_Prefeitura.dll
