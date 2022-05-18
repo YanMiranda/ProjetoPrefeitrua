@@ -73,8 +73,12 @@ namespace ConsoleApp1
 
         public string ImprimeTudo()
         {
-            return "Morador: "+cpf+",Nome:"+ nome+",Tel:"+tel+",Endereço:"+endereco+
-                ",Dependentes:"+dependentes+",Renda:"+renda;
+            return "Morador: "+ nome+"\n"+"CPF: "+cpf+"\n"+
+            "Tel: "+tel+"\n"+
+            "Endereço: "+endereco+"\n"+
+            "Dependentes: "+dependentes+"\n"+
+            "Renda: "+renda+"\n\n";
+
         }
 
     }
