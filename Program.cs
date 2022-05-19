@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections;
+using System.Linq;
+using System.Runtime;
 
 namespace ConsoleApp1
 {
@@ -10,13 +12,24 @@ namespace ConsoleApp1
         static HashSet<Morador> M2 = new HashSet<Morador>();
         static HashSet<Morador> EsperaRendaMinima = new HashSet<Morador>();
         static HashSet<Morador> EsperaRendaMaxima = new HashSet<Morador>();
+        static List<long> sort = new List<long>();
+        
+        static List<long> sort2 = new List<long>();
+        static Morador Tamanho = new Morador();
 
-        private int tamanhoM1;
-        private int tamanhoM2;
+
         public static void Main(String[] args)
         {
 
             byte opcao = 0;
+
+            Console.WriteLine("Antes de comerçar o programa escolha as proporções do trabalho:");
+            Console.WriteLine("Qual será o tamanho da primeira lista de moradores?");
+            Tamanho.SetTamanhoM1(int.Parse(Console.ReadLine()));
+
+            Console.WriteLine("Qual será o tamanho da lista de espera?");
+            Tamanho.SetTamanhoM2(int.Parse(Console.ReadLine()));
+
             do
             {
                 Console.WriteLine("+----------------------------------------------------+");
@@ -48,6 +61,15 @@ namespace ConsoleApp1
                     case 4:
                         ConsultaCpf();
                         break;
+
+                    case 5:
+                        Desistencia();
+                        break;
+
+                    case 6:
+                        Sorteio();
+                        break;
+
                 }
 
             } while (opcao != 9);
@@ -88,21 +110,23 @@ namespace ConsoleApp1
                     M1.Add(MRD);
                     Console.WriteLine("Morador adicionado a lista 1 de renda até " +
                     "um salário mínimo.");
+                    sort.Add(MRD.GetCpf());
                 }
                 else if (MRD.GetRenda() > 1212 && MRD.GetRenda() <= 3636)
                 {
                     M2.Add(MRD);
                     Console.WriteLine("Morador adicionado a lista 2 de renda até " +
                     "três salários mínimos.");
+                    sort2.Add(MRD.GetCpf());
                 }
                 else
                 {
                     Console.WriteLine("O Morador não se encaixa dentro de nenhuma" + "\n" +
                     "das listas por ter renda maior que o permitido.");
                 }
-
+                
                 i++;
-                if (i <= 2)
+                if (i < Tamanho.GetTamanhoM1())
                 {
                     Console.WriteLine("Deseja inserir outro morador? (S/N)");
                     flag = char.Parse(Console.ReadLine());
@@ -111,7 +135,7 @@ namespace ConsoleApp1
                     break;
 
             } while (flag == 'S' || flag == 's');
-            if (i >= 2)
+            if (i == Tamanho.GetTamanhoM1())
             {
                 Console.WriteLine("A lista do sorteio está cheia. Novos moradores serão " +
                 "cadastrados na fila de espera com limite de até três moradores.");
@@ -159,9 +183,11 @@ namespace ConsoleApp1
                             Console.WriteLine("O Morador não se encaixa dentro de nenhuma" + "\n" +
                             "das listas por ter renda maior que o permitido.");
                         }
+
                         j++;
 
-                        if (j <= 2)
+                        if (j <
+                         Tamanho.GetTamanhoM2())
                         {
                             Console.WriteLine("Deseja inserir outro morador na fila de espera? (S/N)");
                             flag = char.Parse(Console.ReadLine());
@@ -173,14 +199,16 @@ namespace ConsoleApp1
                     } while (flag == 's' || flag == 'S');
 
                     Console.WriteLine("Infelizmente não temos mais vagas.");
+                    Console.ReadKey();
                 }
             }
             else
             {
                 Console.WriteLine("Cadastro finalizados. =)");
                 Console.WriteLine("Aperte qualquer tecla para voltar ao menu.");
+                Console.ReadKey();
             }
-            Console.ReadKey();
+
         }
 
         private static void ImprimeMoradores()
@@ -248,5 +276,93 @@ namespace ConsoleApp1
             Console.ReadKey();
         }
 
+        private static void Desistencia()
+        {
+            HashSet<Morador> aux1 = M1;
+            HashSet<Morador> aux2 = M2;
+            HashSet<Morador> filaAux = EsperaRendaMaxima;
+            Console.WriteLine("Insira o CPF para pesquisa de exclusão: ");
+            long busca = long.Parse(Console.ReadLine());
+            char confirmacxclui = ' ';
+
+
+            foreach (Morador m in M1)
+            {
+                if (busca == m.GetCpf())
+                {
+                    Console.WriteLine(m.ImprimeTudo());
+                    Console.WriteLine("Realmente deseja excluir esse morador? S/N");
+                    confirmacxclui = char.Parse(Console.ReadLine());
+                    if (confirmacxclui == 's' || confirmacxclui == 'S')
+                    {
+                        foreach (Morador m1 in aux1)
+                        {
+                            if (busca == m.GetCpf())
+                            {
+                                M1.Remove(m1);
+                            }
+                        }
+                        /*foreach(Morador novo in filaAux)
+                        {
+                               M1.Add(novo);
+                             EsperaRendaMaxima.Remove(novo); 
+                        }*/
+                    }
+                }
+                else
+                    Console.WriteLine("Morador inexistente.");
+            }
+            foreach (Morador m in M2)
+            {
+                if (busca == m.GetCpf())
+                {
+                    Console.WriteLine(m.ImprimeTudo());
+                    Console.WriteLine("Realmente deseja excluir esse morador? S/N");
+                    confirmacxclui = char.Parse(Console.ReadLine());
+                    if (confirmacxclui == 's' || confirmacxclui == 'S')
+                    {
+                        foreach (Morador m2 in aux2)
+                        {
+                            if (busca == m.GetCpf())
+                            {
+                                M2.Remove(m2);
+                            }
+                        }
+                    }
+                }
+                else
+                    Console.WriteLine("Morador inexistente.");
+            }
+
+        }
+        private static void Sorteio()
+        {
+
+            Random Sorteio1 = new Random();
+            int aux = Sorteio1.Next(sort.Count);
+            int aux2 = Sorteio1.Next(sort2.Count);
+            Console.WriteLine(sort[aux]);
+            Console.WriteLine(sort2[aux2]);
+            Console.WriteLine("PARABENS!!");
+             foreach (Morador m in M1)
+            {
+                if (sort[aux] == m.GetCpf())
+                    Console.WriteLine(m.ImprimeTudo());
+                else
+                    Console.WriteLine("Morador inexistente.");
+            }
+            foreach (Morador m in M2)
+            {
+                if (sort[aux2] == m.GetCpf())
+                    Console.WriteLine(m.ImprimeTudo());
+                else
+                    Console.WriteLine("Morador inexistente.");
+            }
+            Console.ReadKey();
+        }
+
+
     }
 }
+
+

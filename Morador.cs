@@ -15,10 +15,18 @@ namespace ConsoleApp1
         private double renda; 
         private byte dependentes; 
         private string endereco;
-        public string GetNome()
+        private int tamanhoM1;
+        private int tamanhoM2;
+        public int GetTamanhoM1()
         {
-            return nome;
+            return tamanhoM1;
         }
+        public int SetTamanhoM1(int t1) => tamanhoM1 = t1;
+        public int GetTamanhoM2()
+        {
+            return tamanhoM2;
+        }
+        public int SetTamanhoM2(int t2) => tamanhoM2 = t2;
         public void SetNome(string n)
         {
             nome = n;
